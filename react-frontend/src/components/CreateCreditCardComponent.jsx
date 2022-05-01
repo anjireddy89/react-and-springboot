@@ -49,7 +49,7 @@ class CreateCreditCardComponent extends Component {
         }
         if (!this.state.cardNumber) {
            // cardNumberError = "Card Number cannot be blank";
-            if (checkLuhn(cardNo))
+            if (checkLuhn(this.state.cardNumber))
                 cardNumberError = "This is a valid card";
             else
                 cardNumberError = "This is not a valid card";
