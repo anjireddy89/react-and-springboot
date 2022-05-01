@@ -40,7 +40,7 @@ public class CreditCardController {
 		return cardRepository.save(card);
 
 	}
-	// get employee by id rest api
+	// get Creditcard by id rest api
 		@GetMapping("/creditcards/{id}")
 		public ResponseEntity<CreditCard> getCreditCardById(@PathVariable Long id) {
 			CreditCard card = cardRepository.findById(id)
@@ -48,7 +48,7 @@ public class CreditCardController {
 			return ResponseEntity.ok(card);
 		}
 		
-		// update employee rest api
+		// update Creditcard rest api
 		
 		@PutMapping("/creditcards/{id}")
 		public ResponseEntity<CreditCard> updateCreditCard(@PathVariable Long id, @RequestBody CreditCard cardDetails){
@@ -63,7 +63,7 @@ public class CreditCardController {
 			return ResponseEntity.ok(updatedEmployee);
 		}
 		
-		// delete employee rest api
+		// delete Creditcard rest api
 		@DeleteMapping("/creditcards/{id}")
 		public ResponseEntity<Map<String, Boolean>> deleteCreditCard(@PathVariable Long id){
 			CreditCard card = cardRepository.findById(id)
