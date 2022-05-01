@@ -48,11 +48,8 @@ class CreateCreditCardComponent extends Component {
             nameError = "Name cannot be blank";
         }
         if (!this.state.cardNumber) {
-           // cardNumberError = "Card Number cannot be blank";
-            if (checkLuhn(this.state.cardNumber))
-                cardNumberError = "This is a valid card";
-            else
-                cardNumberError = "This is not a valid card";
+           cardNumberError = "Card Number cannot be blank";
+            
         }
         if (!this.state.limit) {
             limitError = "Limit cannot be blank";
@@ -95,29 +92,6 @@ class CreateCreditCardComponent extends Component {
         if (rx_live.test(event.target.value))
             this.setState({ limit: event.target.value });
     }
-    checkLuhn(cardNo) {
-        let nDigits = cardNo.length;
-
-        let nSum = 0;
-        let isSecond = false;
-        for (let i = nDigits - 1; i >= 0; i--) {
-
-            let d = cardNo[i].charCodeAt() - '0'.charCodeAt();
-
-            if (isSecond == true)
-                d = d * 2;
-
-            // We add two digits to handle
-            // cases that make two digits
-            // after doubling
-            nSum += parseInt(d / 10, 10);
-            nSum += d % 10;
-
-            isSecond = !isSecond;
-        }
-        return (nSum % 10 == 0);
-    }
-
     cancel() {
         this.props.history.push('/');
     }
